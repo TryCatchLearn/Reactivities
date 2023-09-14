@@ -10,6 +10,6 @@ You can see how this app was made by checking out the Udemy course for this here
 
 [Udemy course](https://www.udemy.com/course/complete-guide-to-building-an-app-with-net-core-and-react/?couponCode=REGITHUB)
 
-If you are looking for the repository for the version of this app created on .Net 6.0 and Angular v12 then this is available here:
+If you are looking for the repository for the version of this app created on .Net 6.0, React 16 and React Router 5 then this is available here:
 
 https://github.com/TryCatchLearn/Reactivities-v6
