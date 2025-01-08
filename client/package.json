@@ -15,6 +15,8 @@
     "@fontsource/roboto": "^5.1.1",
     "@mui/icons-material": "^6.3.0",
     "@mui/material": "^6.3.0",
+    "@tanstack/react-query": "^5.62.16",
+    "@tanstack/react-query-devtools": "^5.62.16",
     "axios": "^1.7.9",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
