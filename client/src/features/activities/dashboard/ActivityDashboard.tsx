@@ -8,7 +8,14 @@ export default function ActivityDashboard() {
             <Grid2 size={8}>
                 <ActivityList />
             </Grid2>
-            <Grid2 size={4}>
+            <Grid2 
+                size={4}
+                sx={{
+                    position: 'sticky',
+                    top: 112,
+                    alignSelf: 'flex-start'
+                }}
+            >
                 <ActivityFilters />
             </Grid2>
         </Grid2>
