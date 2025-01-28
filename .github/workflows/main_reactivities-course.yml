@@ -16,6 +16,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set up node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      
+      - name: Install deps and build react app
+        run: |
+          cd client
+          npm install
+          npm run build
+
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v4
         with:
