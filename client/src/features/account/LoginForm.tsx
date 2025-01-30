@@ -28,7 +28,7 @@ export default function LoginForm() {
             console.log(error);
             toast.error('Problem sending email - please check email address');
         }
-   
+
     }
 
     const onSubmit = async (data: LoginSchema) => {
@@ -86,12 +86,20 @@ export default function LoginForm() {
                     </Button>
                 </Box>
             ) : (
-                <Typography sx={{ textAlign: 'center' }}>
-                    Don't have an account?
-                    <Typography sx={{ ml: 2 }} component={Link} to='/register' color="primary">
-                        Sign up
+                <Box display='flex' alignItems='center' justifyContent='center' gap={3}>
+                    <Typography>
+                        Forgot password? Click <Link to='/forgot-password'>here</Link>
                     </Typography>
-                </Typography>
+
+                    <Typography sx={{ textAlign: 'center' }}>
+                        Don't have an account?
+                        <Typography sx={{ ml: 2 }} component={Link} to='/register' color="primary">
+                            Sign up
+                        </Typography>
+                    </Typography>
+                </Box>
+
+
             )}
         </Paper>
     )
