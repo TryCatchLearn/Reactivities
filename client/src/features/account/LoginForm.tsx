@@ -22,13 +22,13 @@ export default function LoginForm() {
 
     const handleResendEmail = async () => {
         try {
-            await resendConfirmationEmail.mutateAsync(email);
+
+            await resendConfirmationEmail.mutateAsync({email});
             setNotVerified(false);
         } catch (error) {
             console.log(error);
             toast.error('Problem sending email - please check email address');
         }
-
     }
 
     const onSubmit = async (data: LoginSchema) => {
@@ -98,8 +98,6 @@ export default function LoginForm() {
                         </Typography>
                     </Typography>
                 </Box>
-
-
             )}
         </Paper>
     )

@@ -1,7 +1,6 @@
 using System;
 using Domain;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
 using Resend;
 
 namespace Infrastructure.Email;

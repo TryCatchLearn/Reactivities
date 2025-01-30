@@ -43,14 +43,20 @@ public class AccountController(SignInManager<User> signInManager,
 
     [AllowAnonymous]
     [HttpGet("resendConfirmEmail")]
-    public async Task<ActionResult> ResendConfirmEmail(string email)
+    public async Task<ActionResult> ResendConfirmEmail(string? email, string? userId)
     {
+        if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(userId))
+        {
+            return BadRequest("Email or UserId must be provided");
+        }
+
         var user = await signInManager.UserManager.Users
-            .FirstOrDefaultAsync(x => x.Email == email);
+            .FirstOrDefaultAsync(x => x.Email == email || x.Id == userId);
 
-        if (user == null) return BadRequest("Invalid email");
+        if (user == null || string.IsNullOrEmpty(user.Email)) 
+            return BadRequest("User not found");
 
-        await SendConfirmationEmailAsync(user, email);
+        await SendConfirmationEmailAsync(user, user.Email);
 
         return Ok();
     }
