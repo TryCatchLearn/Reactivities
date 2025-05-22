@@ -116,6 +116,17 @@ public class DbInitializer
                 Venue = "River Thames, England, United Kingdom",
                 Latitude = 51.5575525,
                 Longitude = -0.781404
+            },
+            new()
+            {
+                Title = "Badminton",
+                Date = DateTime.Now.AddMonths(-2),
+                Description = "activity tomorrow",
+                Category = "Sports",
+                City = "Gurgaon",
+                Venue = "Flow Sports Gurgaon",
+                Latitude = 51.51171665,
+                Longitude = -0.1256611057818921,
             }
         };
 
