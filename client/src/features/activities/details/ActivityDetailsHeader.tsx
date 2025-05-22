@@ -61,7 +61,7 @@ export default function ActivityDetailsHeader({activity}: Props) {
                         </Button>
                         <Button
                             variant="contained"
-                            color="primary"
+                                
                             component={Link}
                             to={`/manage/activityId`}
                             disabled={isCancelled}

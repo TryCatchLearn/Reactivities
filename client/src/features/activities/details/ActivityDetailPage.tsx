@@ -5,6 +5,7 @@ import ActivityDetailsSidebar from "./ActivityDetailsSidebar";
 import ActivityDetailsInfo from "./ActivityDetailsInfo";
 import ActivityDetailsChat from "./ActivityDetailsChat";
 import ActivityDetailsHeader from "./ActivityDetailsHeader";
+import GetbacktoActivity from "./GetbacktoActivity";
 export default function ActivityDetailPage() {
       
 
@@ -22,6 +23,7 @@ export default function ActivityDetailPage() {
             <ActivityDetailsHeader activity={activity}/>
             <ActivityDetailsInfo activity={activity}/>
             <ActivityDetailsChat/>
+            <GetbacktoActivity/>
 
             </Grid2 >
             <Grid2 size={4}>

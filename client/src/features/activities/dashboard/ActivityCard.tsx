@@ -36,52 +36,51 @@ export default function ActivityCard({ activity }: Props) {
 
         />
         <Box display='flex' flexDirection='column' gap={2} mr={2}>
-          {(isHost || isGoing) && <Chip label={lable} color={color} sx={{borderRadius: 2}}/>}
-          {isCancelled && <Chip label='Cancelled' color='error' sx={{borderRadius: 2}}/>}
+          {(isHost || isGoing) && <Chip label={lable} color={color} sx={{ borderRadius: 2 }} />}
+          {isCancelled && <Chip label='Cancelled' color='error' sx={{ borderRadius: 2 }} />}
+        </Box>
+      </Box>
+
+
+      <Divider sx={{ mb: 3 }} />
+
+      <CardContent sx={{ p: 0 }}>
+        <Box display='flex' alignItems='center' mb={2} px={2}>
+          <Box display='flex' flexGrow={0} alignItems='center'>
+            <AccessTime sx={{ mr: 1 }} />
+            <Typography variant="body2" noWrap>
+              {formatDate(activity.date)}
+            </Typography>
           </Box>
-          </Box>
 
+          <Place sx={{ ml: 3, mr: 1 }} />
+          <Typography variant="body2">{activity.venue}</Typography>
 
-          <Divider sx= {{mb: 3}}/>
+        </Box>
 
-          <CardContent sx={{p: 0}}>
-            <Box display='flex' alignItems='center' mb={2} px={2}>
-              <Box display='flex' flexGrow={0} alignItems='center'>
-                <AccessTime sx={{mr: 1}}/>
-              <Typography variant="body2" noWrap>
-                {formatDate(activity.date)}
-                </Typography>
-              </Box>
-              
-              <Place sx={{ml: 3, mr: 1}}/>
-              <Typography variant="body2">{activity.venue}</Typography>
+        <Divider />
+        <Box display='flex' gap={2} sx={{ backgroundColor: 'grey.200', py: 3, pl: 3 }}>
+          Attendees Go Here
+        </Box>
+      </CardContent>
+      <CardContent>
 
-            </Box>
-
-            <Divider/>
-            <Box display='flex' gap={2} sx={{backgroundColor: 'grey.200', py: 3, pl: 3}}>
-
-              Attendees Go Here
-            </Box>
-          </CardContent>
-          <CardContent>
-
-          </CardContent>
-          <CardContent sx={{ pb: 2 }}>
+      </CardContent>
+      <CardContent sx={{ pb: 2 }}>
         <Typography variant="body2">
           {activity.description}
         </Typography>
-       
-          <Button 
+
+        <Button
           component={Link}
-          to={`/activities/${activity.id}`} 
+          to={`/activities/${activity.id}`}
           size="medium"
           variant="contained"
-          sx={{display: 'flex', justifySelf: 'self-end', borderRadius: 3}}
-          
-          >
+          sx={{ display: 'flex', justifySelf: 'self-end', borderRadius: 3 }}
+
+        >
           View
-          </Button>
+        </Button>
       </CardContent>
     </Card>
   )
