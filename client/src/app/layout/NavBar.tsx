@@ -6,7 +6,7 @@ import { useStore } from "../../lib/hooks/useStore";
 import { Observer } from "mobx-react-lite";
 
 export default function NavBar() {
-const{uiStore}= useStore();
+    const { uiStore } = useStore();
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" sx={{
@@ -23,36 +23,39 @@ const{uiStore}= useStore();
                         </Box>
                         <Box sx={{ display: 'flex' }}>
                             <MenuItermLink to='/activities'>
-                            Activities 
+                                Activities
                             </MenuItermLink>
                             <MenuItermLink to='/createActivity'>
-                            Create Activity
+                                Create Activity
                             </MenuItermLink>
                             <MenuItermLink to='/counter'>
-                            Counter
+                                Counter
+                            </MenuItermLink>
+                            <MenuItermLink to='/errors'>
+                                Errors
                             </MenuItermLink>
                         </Box>
-                        <MenuItem> 
-                        User Menu
+                        <MenuItem>
+                            User Menu
                         </MenuItem>
                     </Toolbar>
                 </Container>
                 <Observer>
-                    {()=> uiStore.isLoading?(
+                    {() => uiStore.isLoading ? (
                         <LinearProgress
-                        color="secondary"
-                        sx={{
-                            position:'absolute',
-                            bottom: 0,
-                            left: 0,
-                            right: 0,
-                            height: 4
+                            color="secondary"
+                            sx={{
+                                position: 'absolute',
+                                bottom: 0,
+                                left: 0,
+                                right: 0,
+                                height: 4
 
-                        }}
+                            }}
 
                         />
-                    ):null}
-                </Observer>                
+                    ) : null}
+                </Observer>
             </AppBar>
         </Box>
     )
