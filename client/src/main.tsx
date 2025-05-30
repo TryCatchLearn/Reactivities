@@ -11,19 +11,24 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { RouterProvider } from 'react-router';
 import { router } from './app/layout/route/Routes.tsx';
 import { store, Storecontext } from './lib/stores/stores.ts';
-import {ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import {AdapterDateFns} from '@mui/x-date-pickers/AdapterDateFns';
 
 
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Storecontext.Provider value={store}>
-    <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools />
-      <ToastContainer position='bottom-right' hideProgressBar theme='colored'/>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
-    </Storecontext.Provider>
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <Storecontext.Provider value={store}>
+        <QueryClientProvider client={queryClient}>
+          <ReactQueryDevtools />
+          <ToastContainer position='bottom-right' hideProgressBar theme='colored' />
+          <RouterProvider router={router} />
+        </QueryClientProvider>
+      </Storecontext.Provider>
+    </LocalizationProvider>
+
   </StrictMode>,
 )

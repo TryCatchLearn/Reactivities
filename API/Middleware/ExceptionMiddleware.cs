@@ -4,7 +4,6 @@ using Application.Core;
 using FluentValidation;
 namespace API.Middleware;
 
-
 public class ExceptoinMiddleware(ILogger<ExceptoinMiddleware> logger, IHostEnvironment env) : IMiddleware
 {
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
