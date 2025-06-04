@@ -7,17 +7,21 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Application.Core;
 using SQLitePCL;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers;
 
 public class ActivitiesController : BaseApiController
 {
+   
     [HttpGet]
     public async Task<ActionResult<List<Activity>>> GetActivities()
     {
         return await Mediator.Send(new GetActivityList.Query());
     }
 
+    
+    
     [HttpGet("{id}")]
     public async Task<ActionResult<Activity>> GetActivityDetail(string id)
     {
