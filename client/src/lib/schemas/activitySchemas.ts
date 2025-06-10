@@ -1,7 +1,7 @@
-import {z} from 'zod';
-const requiredstring= (fieldName: string) => z.string({required_error: `${fieldName} is required`}).min(1, {message: `${fieldName} is required`})
+import { z } from 'zod';
+import { requiredstring } from '../util/util';
 
-export const activitySchemas= z.object({
+export const activitySchemas = z.object({
     title: requiredstring('Title'),
     description: requiredstring('Description'),
     category: requiredstring('Category'),
@@ -16,4 +16,4 @@ export const activitySchemas= z.object({
     })
 })
 
-export type ActivitySchema= z.infer<typeof activitySchemas>;
+export type ActivitySchema = z.infer<typeof activitySchemas>;
