@@ -1,0 +1,14 @@
+using System;
+
+namespace Application.Profiles.DTOS;
+
+public class UserProfile
+{
+    public required string Id { get; set; }
+
+    public required string DisplayName { get; set; }
+
+    public string? Bio { get; set; }
+    
+    public string? ImageURL { get; set; }
+}
