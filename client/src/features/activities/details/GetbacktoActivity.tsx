@@ -17,7 +17,7 @@ export default function GetbacktoActivity() {
                 variant='contained'
 
 
-                onClick={() => navigate('/activities/')}
+                onClick={() => navigate('/activities')}
             >
                 Get Back To ActivityDashboard
             </Button>

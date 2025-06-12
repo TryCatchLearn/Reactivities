@@ -2,17 +2,15 @@ import { AccessTime, Place } from "@mui/icons-material";
 import { Avatar, Box, Button, Card, CardContent, CardHeader, Chip, Divider, Typography } from "@mui/material"
 import { Link } from "react-router";
 import { formatDate } from "../../../lib/util/util";
+import AvatarPopover from "../../../app/layout/components/AvatarPopover";
 type Props = {
   activity: Activity
 
 }
 
 export default function ActivityCard({ activity }: Props) {
-  const isHost = false;
-  const isGoing = false;
-  const lable = isHost ? 'You are Hosting' : 'You are Going';
-  const isCancelled = false;
-  const color = isHost ? 'secondary' : isGoing ? 'warning' : 'default';
+  const lable = activity.isHost ? 'You are Hosting' : 'You are Going';
+  const color = activity.isHost ? 'secondary' : activity.isGoing ? 'warning' : 'default';
 
 
   return (
@@ -27,7 +25,7 @@ export default function ActivityCard({ activity }: Props) {
           }}
           subheader={
             <>
-              Hosted By{' '}<Link to={`/profiles/bob`}> Bob</Link>
+              Hosted By{' '}<Link to={`/profiles/${activity.hostId}`}> {activity.hostDisplayName}</Link>
 
 
             </>
@@ -36,8 +34,8 @@ export default function ActivityCard({ activity }: Props) {
 
         />
         <Box display='flex' flexDirection='column' gap={2} mr={2}>
-          {(isHost || isGoing) && <Chip label={lable} color={color} sx={{ borderRadius: 2 }} />}
-          {isCancelled && <Chip label='Cancelled' color='error' sx={{ borderRadius: 2 }} />}
+          {(activity.isHost || activity.isGoing) && <Chip label={lable} variant="outlined" color={color} sx={{ borderRadius: 2 }} />}
+          {activity.isCancelled && <Chip label='Cancelled' color='error' sx={{ borderRadius: 2 }} />}
         </Box>
       </Box>
 
@@ -60,7 +58,9 @@ export default function ActivityCard({ activity }: Props) {
 
         <Divider />
         <Box display='flex' gap={2} sx={{ backgroundColor: 'grey.200', py: 3, pl: 3 }}>
-          Attendees Go Here
+          {activity.attendees.map(att => (
+            <AvatarPopover profile={att} key={att.id}/>
+          ))}
         </Box>
       </CardContent>
       <CardContent>

@@ -7,16 +7,31 @@ type Activity = {
   isCancelled: boolean
   city: string
   venue: string
-  latitude: number
+latitude: number
   longitude: number
+  attendees: Profile[]
+  isGoing: boolean
+  isHost: boolean
+  hostId: string
+  hostDisplayName: string
+
 }
-type User= 
-{
-  id: string
-  email: string
-  displayName: string
-  imageURL?: string
-}
+
+type Profile =
+  {
+    id: string
+    displayName: string
+    bio?: string
+    imageUrl?: string
+
+  }
+type User =
+  {
+    id: string
+    email: string
+    displayName: string
+    imageURL?: string
+  }
 
 
 type LocationIQSuggestoin = {
