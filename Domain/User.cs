@@ -1,4 +1,5 @@
 using System;
+using System.Dynamic;
 using Microsoft.AspNetCore.Identity;
 
 namespace Domain;
@@ -12,4 +13,6 @@ public class User : IdentityUser
     //Nav properties 
 
     public ICollection<ActivityAttendee> Activities { get; set; } = [];
+
+    public ICollection<Photo> Photos { get; set; } = [];
 }
