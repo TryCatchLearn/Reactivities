@@ -8,7 +8,7 @@ type Props = {
     profile: Profile
 }
 
-export default function MouseHoverPopover({ profile }: Props) {
+export default function AvatarPopover({ profile }: Props) {
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
     const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -24,8 +24,9 @@ export default function MouseHoverPopover({ profile }: Props) {
     return (
         <>
             <Avatar
+           
                 alt={profile.displayName + 'image'}
-                src={profile.imageUrl}
+                src={profile.ImageURL}
                 component={Link}
                 to={`/profiles/${profile.id}`}
                 onMouseEnter={handlePopoverOpen}

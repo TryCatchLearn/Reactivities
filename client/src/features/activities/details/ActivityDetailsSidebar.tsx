@@ -22,8 +22,8 @@ export default function ActivityDetailsSidebar({ activity }: Props) {
                 </Typography>
             </Paper>
             <Paper sx={{ padding: 2 }}>
-                {activity.attendees.map(attedee => (
-                    <Grid2 key={attedee.id}container alignItems="center">
+                {activity.attendees.map(attendee => (
+                    <Grid2 key={attendee.id}container alignItems="center">
                         <Grid2 size={8}>
                             <List sx={{ display: 'flex', flexDirection: 'column' }}>
                                 <ListItem>
@@ -31,12 +31,12 @@ export default function ActivityDetailsSidebar({ activity }: Props) {
                                         <Avatar
                                             variant="rounded"
                                             sx={{ width: 75, height: 75, mr: 3 }}
-                                            alt={attedee.displayName + ' image'}
-                                            src={attedee.imageUrl}
+                                            alt={attendee.displayName + ' image'}
+                                            src={attendee.imageUrl}
                                         />
                                     </ListItemAvatar>
                                     <ListItemText>
-                                        <Typography variant="h6">{attedee.displayName}</Typography>
+                                        <Typography variant="h6">{attendee.displayName}</Typography>
                                         {following && (
                                             <Typography variant="body2" color="orange">
                                                 Following
@@ -47,7 +47,7 @@ export default function ActivityDetailsSidebar({ activity }: Props) {
                             </List>
                         </Grid2>
                         <Grid2 size={4} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 1 }}>
-                            {activity.hostId === attedee.id && (
+                            {activity.hostId === attendee.id && (
                                 <Chip
                                     label="Host"
                                     color="warning"

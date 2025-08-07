@@ -17,7 +17,11 @@ export default function ActivityCard({ activity }: Props) {
     <Card elevation={3} sx={{ borderRadius: 3 }}>
       <Box display='flex' alignItems='center' justifyContent='space-between'>
         <CardHeader
-          avatar={<Avatar sx={{ height: 80, width: 70 }} />}
+          avatar={<Avatar
+            src={activity.hostImageUrl}
+            sx={{height: 80, width: 70}}
+            alt="image of host"
+          />}
           title={activity.title}
           titleTypographyProps={{
             fontWeight: 'bold',
@@ -59,7 +63,7 @@ export default function ActivityCard({ activity }: Props) {
         <Divider />
         <Box display='flex' gap={2} sx={{ backgroundColor: 'grey.200', py: 3, pl: 3 }}>
           {activity.attendees.map(att => (
-            <AvatarPopover profile={att} key={att.id}/>
+            <AvatarPopover profile={att} key={att.id} />
           ))}
         </Box>
       </CardContent>

@@ -31,16 +31,16 @@ export default function ActivityForm() {
 
     const onSubmit = (data: ActivitySchema) => {
         const {location, ...rest}= data;
-        const fattenedData= {...rest, ...location};
+        const Data= {...rest, ...location};
         try {
             if(activity){
-                updateActivity.mutate({...activity, ...fattenedData},{
+                updateActivity.mutate({...activity, ...Data},{
                     onSuccess: () =>  navigate(`/activities/${activity.id}`)
                 })
             }
             else
             {
-             createActivity.mutate(fattenedData, {
+             createActivity.mutate(Data, {
                 onSuccess:( id)=> navigate(`/activities/${id}`)
              })   
             }

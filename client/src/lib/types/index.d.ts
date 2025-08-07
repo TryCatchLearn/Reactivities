@@ -7,13 +7,14 @@ type Activity = {
   isCancelled: boolean
   city: string
   venue: string
-latitude: number
+  latitude: number
   longitude: number
   attendees: Profile[]
   isGoing: boolean
   isHost: boolean
   hostId: string
   hostDisplayName: string
+  hostImageUrl: string
 
 }
 
@@ -22,9 +23,14 @@ type Profile =
     id: string
     displayName: string
     bio?: string
-    imageUrl?: string
+    ImageURL?: string
 
   }
+
+type Photo = {
+  id: string
+  url: string
+}
 type User =
   {
     id: string
