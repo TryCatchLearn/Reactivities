@@ -10,5 +10,5 @@ public class UserProfile
 
     public string? Bio { get; set; }
     
-    public string? ImageURL { get; set; }
+    public string? ImageUrl { get; set; }
 }

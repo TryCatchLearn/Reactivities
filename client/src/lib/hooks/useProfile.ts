@@ -35,14 +35,14 @@ export const useProfile = (id?: string) =>{
                 if(!data) return data;
                 return {
                     ...data, 
-                    imageUrl: data.imageURL ?? photo.url
+                    imageUrl: data.imageUrl ?? photo.url
                 }
             });
             queryclient.setQueryData(['profile', id], (data : Profile) => {
                 if(!data) return data;
                 return {
                     ...data, 
-                    imageUrl: data.ImageURL ?? photo.url
+                    imageUrl: data.imageUrl ?? photo.url
                 }
             });
         }

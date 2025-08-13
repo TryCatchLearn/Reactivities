@@ -2,6 +2,7 @@ import { Person } from "@mui/icons-material";
 import { Box, Card, CardContent, CardMedia, Chip, Divider, Typography } from "@mui/material";
 import { Link } from "react-router";
 
+
 type Props = {
     profile: Profile
 }
@@ -12,9 +13,10 @@ export default function ProfileCard({ profile }: Props) {
             <Card
                 sx={{ borderRadius: 3, p: 3, maxWidth: 300, textDecoration: 'none' }}
                 elevation={4}>
-                <CardMedia component='img' src={profile?.ImageURL}
+                <CardMedia component='img' src={profile?.imageUrl}
                     sx={{ width:'100%', zIndex: 50 }}
                     alt={profile.displayName + ' image'}
+                    
 
                 />
                 <CardContent>
@@ -44,8 +46,10 @@ export default function ProfileCard({ profile }: Props) {
 
                 </Box>
             </Card>
+            
 
         </Link>
+       
 
     )
 }

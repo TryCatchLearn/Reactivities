@@ -15,6 +15,7 @@
     "@emotion/styled": "^11.14.0",
     "@fontsource/roboto": "^5.1.1",
     "@hookform/resolvers": "^5.0.1",
+    "@microsoft/signalr": "^9.0.6",
     "@mui/icons-material": "^6.3.0",
     "@mui/material": "^6.3.0",
     "@mui/x-date-pickers": "^8.5.0",

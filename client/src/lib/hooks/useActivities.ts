@@ -22,7 +22,7 @@ export const useActivities = (id?: string) => {
                     ...activity,
                     isHost: currentuser?.id === activity.hostId,
                     isGoing: activity.attendees.some(x => x.id === currentuser?.id),
-                    hostImageUrl : host?.ImageURL
+                    hostImageUrl : host?.imageUrl
                     
                 }
             })
@@ -43,7 +43,7 @@ export const useActivities = (id?: string) => {
                 ...data,
                 isHost: currentuser?.id === data.hostId,
                 isGoing: data.attendees.some(x => x.id === currentuser?.id),
-                hostImageUrl: host?.ImageURL
+                hostImageUrl: host?.imageUrl
             }
         }
     })
@@ -111,7 +111,7 @@ export const useActivities = (id?: string) => {
                         :[...oldActivity.attendees, {
                             id: currentuser.id,
                             displayName: currentuser.displayName,
-                            imageUrl: currentuser.imageURL
+                            imageUrl: currentuser.ImageUrl
                             
                         }]
                     }

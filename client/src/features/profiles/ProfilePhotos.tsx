@@ -73,10 +73,10 @@ export default function ProfilePhotos() {
                         onClick={() => setMainPhoto.mutate(item)}
                       >
 
-                        <StarButton selected={item.url === profile?.ImageURL} />
+                        <StarButton selected={item.url === profile?.imageUrl} />
 
                       </Box>
-                      {profile?.ImageURL !== item.url && (
+                      {profile?.imageUrl !== item.url && (
                         <Box
                           sx={{ position: 'absolute', top: 0, right: 0 }}
                           onClick={() => deletePhoto.mutate(item.id)}

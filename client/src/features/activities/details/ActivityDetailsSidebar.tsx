@@ -1,4 +1,5 @@
 import { Paper, Typography, List, ListItem, Chip, ListItemAvatar, Avatar, ListItemText, Grid2 } from "@mui/material";
+
 type Props =
     {
         activity: Activity

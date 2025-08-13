@@ -26,7 +26,7 @@ export default function StarButton({ selected }: Props) {
                 <Star
                     sx={{
                         fontSize: 28,
-                        color: selected ? 'red' : 'rgba(0, 0, 0, 0.5)'
+                        color: selected ? 'black' : 'rgba(0, 0, 0, 0.5)'
 
                     }}            >
 

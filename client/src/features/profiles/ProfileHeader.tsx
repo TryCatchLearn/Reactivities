@@ -1,5 +1,6 @@
 import { Avatar, Box, Button, Chip, Divider, Grid2, Paper, Stack, Typography } from "@mui/material";
 
+
 type Props = {
     profile: Profile
 }
@@ -15,7 +16,7 @@ export default function ProfileHeader({profile}: Props) {
                     <Stack direction='row' spacing={3} alignItems='center'>
 
                         <Avatar
-                         src={profile.ImageURL}
+                         src={profile.imageUrl}
                          alt={profile.displayName + 'image'}
                          
                          

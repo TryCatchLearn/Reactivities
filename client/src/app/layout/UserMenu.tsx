@@ -30,7 +30,7 @@ export default function UserMenu() {
             >
                 <Box display='flex' alignItems='center' gap={2}>
                     <Avatar 
-                    src={currentuser?.imageURL}
+                    src={currentuser?.imageUrl}
                     alt='current user image'
                     />
                     {currentuser?.displayName}

@@ -13,6 +13,7 @@ export default function MapComponent({position, venue}: Props) {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <Marker position={position}>
+                
                 <Popup>
                    {venue}
                 </Popup>

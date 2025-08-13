@@ -16,14 +16,16 @@ type Activity = {
   hostDisplayName: string
   hostImageUrl: string
 
+
 }
 
 type Profile =
   {
+    // imageUrl: string | undefined
     id: string
     displayName: string
     bio?: string
-    ImageURL?: string
+    imageUrl?: string
 
   }
 
@@ -36,8 +38,20 @@ type User =
     id: string
     email: string
     displayName: string
-    imageURL?: string
+    imageUrl?: string
+    // imageUrl: string | undefined
+    
   }
+
+type ChatComment = {
+  id: string
+  createAt: string
+  body: string
+  userId: string
+  displayname: string
+  imageUrl?: string
+
+}
 
 
 type LocationIQSuggestoin = {
