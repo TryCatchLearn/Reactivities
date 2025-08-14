@@ -23,7 +23,7 @@ public class CommentHub(IMediator mediator) : Hub
         var httpcontext = Context.GetHttpContext();
         var activityId = httpcontext?.Request.Query["ActivityId"].ToString();
 
-        // if (string.IsNullOrEmpty(activityId)) throw new HubException("No Activity with this ID");
+        if (string.IsNullOrEmpty(activityId)) throw new HubException("No Activity with this ID");
 
         await Groups.AddToGroupAsync(Context.ConnectionId, activityId!);
 

@@ -1,5 +1,6 @@
 using System;
 using Application.Core;
+using Application.Interface;
 using Application.Profiles.DTOS;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
@@ -18,12 +19,12 @@ public class GetPhofile
         public required string UserId { get; set; }
     }
 
-    public class Handler(AppDbContext context, IMapper mapper) : IRequestHandler<Query, Results<UserProfile>>
+    public class Handler(AppDbContext context, IMapper mapper, IUserAccessor accessor) : IRequestHandler<Query, Results<UserProfile>>
     {
         public async Task<Results<UserProfile>> Handle(Query request, CancellationToken cancellationToken)
         {
             var profile = await context.Users
-            .ProjectTo<UserProfile>(mapper.ConfigurationProvider)
+            .ProjectTo<UserProfile>(mapper.ConfigurationProvider, new {currrentUserId = accessor.GetUserId()})
             .SingleOrDefaultAsync(x => x.Id == request.UserId, cancellationToken);
 
 

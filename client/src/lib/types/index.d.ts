@@ -1,3 +1,5 @@
+import { number } from "zod"
+
 type Activity = {
   id: string
   title: string
@@ -26,6 +28,9 @@ type Profile =
     displayName: string
     bio?: string
     imageUrl?: string
+    followersCount?: number
+    followingCount?: number
+    following?: boolean
 
   }
 

@@ -1,17 +1,17 @@
 import { Person } from "@mui/icons-material";
 import { Box, Card, CardContent, CardMedia, Chip, Divider, Typography } from "@mui/material";
 import { Link } from "react-router";
+import { Profile } from "../../lib/types";
 
 
 type Props = {
     profile: Profile
 }
-const following = false;
 export default function ProfileCard({ profile }: Props) {
     return (
         <Link to={`/profiles${profile.id}`} style={{ textDecoration: 'none' }}>
             <Card
-                sx={{ borderRadius: 3, p: 3, maxWidth: 300, textDecoration: 'none' }}
+                sx={{ borderRadius: 3, p: 3, maxWidth: 200, textDecoration: 'none' }}
                 elevation={4}>
                 <CardMedia component='img' src={profile?.imageUrl}
                     sx={{ width:'100%', zIndex: 50 }}
@@ -34,7 +34,7 @@ export default function ProfileCard({ profile }: Props) {
                         )}
 
 
-                        {following && <Chip size="small" label='Following'
+                        {profile.following && <Chip size="small" label='Following'
                             color="secondary" variant="outlined" />}
 
                     </Box>
@@ -42,7 +42,7 @@ export default function ProfileCard({ profile }: Props) {
                 <Divider sx={{ mb: 2 }} />
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'start' }}>
                     <Person />
-                    <Typography sx={{ ml: 1 }}> 20 Followers</Typography>
+                    <Typography sx={{ ml: 1 }}> {profile.followersCount} Followers</Typography>
 
                 </Box>
             </Card>
