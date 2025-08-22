@@ -54,7 +54,7 @@ export default function UserMenu() {
                         <Add />
 
                     </ListItemIcon>
-                    <ListItemIcon>Create Activity</ListItemIcon>
+                    <ListItemIcon>Create Mission</ListItemIcon>
 
 
                 </MenuItem>

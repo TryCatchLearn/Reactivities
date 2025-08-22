@@ -23,7 +23,7 @@ export default function NavBar() {
                             <MenuItem component={NavLink} to='/' sx={{ display: 'flex', gap: 2 }}>
                                 <Group fontSize="large" />
                                 <Typography sx={{ position: 'relative' }} variant="h4" fontWeight='bold'>
-                                    Reactivities
+                                    FriendGrid
                                 </Typography>
                                 <Observer>
                                     {() => uiStore.isLoading ? (
@@ -44,8 +44,8 @@ export default function NavBar() {
                             </MenuItem>
                         </Box>
                         <Box sx={{ display: 'flex' }}>
-                            <MenuItermLink to='/activities'>
-                                Activities
+                            <MenuItermLink to='/friendGrid'>
+                                Missions
                             </MenuItermLink>
                             <MenuItermLink to='/counter'>
                                 Counter

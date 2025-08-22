@@ -17,9 +17,9 @@ export default function GetbacktoActivity() {
                 variant='contained'
 
 
-                onClick={() => navigate('/activities')}
+                onClick={() => navigate('/friendGrid')}
             >
-                Get Back To ActivityDashboard
+                Get Back To Missions
             </Button>
         </Box>
 

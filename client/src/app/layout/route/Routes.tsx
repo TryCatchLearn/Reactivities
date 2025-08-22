@@ -21,8 +21,8 @@ export const router = createBrowserRouter(
             children: [
                 {
                     element: <RequireAuth />, children: [
-                        { path: 'activities', element: <ActivityDashboard /> },
-                        { path: 'activities/:id', element: <ActivityDetailPage /> },
+                        { path: 'friendGrid', element: <ActivityDashboard /> },
+                        { path: 'friendGrid/:id', element: <ActivityDetailPage /> },
                         { path: 'createActivity', element: <ActivityForm key='create' /> },
                         { path: 'manage/:id', element: <ActivityForm /> },
                         { path: 'profiles/:id', element: <ProfilePage/> }

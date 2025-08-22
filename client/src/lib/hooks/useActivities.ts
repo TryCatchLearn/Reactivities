@@ -10,11 +10,11 @@ export const useActivities = (id?: string) => {
     const { currentuser } = UseAccount();
     const location = useLocation()
 
-    const { data: activitiesGroup, isLoading, isFetchingNextPage, fetchNextPage, hasNextPage } =
-     useInfiniteQuery<PagedList<Activity, string>>({
-        queryKey: ['activities',filter, startDate],
+    const { data: activitiesGroup, isLoading, isFetchingNextPage, fetchNextPage, hasNextPage } = 
+    useInfiniteQuery<PagedList<Activity, string>>({
+        queryKey: ['friendGrid',filter, startDate],
         queryFn: async ({pageParam = null}) => {
-            const response = await agent.get<PagedList<Activity, string>>('/activities',{
+            const response = await agent.get<PagedList<Activity, string>>('/friendGrid',{
 
                 params : 
                 {
@@ -32,7 +32,7 @@ export const useActivities = (id?: string) => {
         initialPageParam: null,
         getNextPageParam: (lastPage) => lastPage.nextCursor,
 
-        enabled: !id && location.pathname == '/activities' && !!currentuser,
+        enabled: !id && location.pathname.toLowerCase().includes('friendgrid') && !!currentuser,
         select: data => ({
             ...data,
             pages: data.pages.map((page) =>({
@@ -51,9 +51,9 @@ export const useActivities = (id?: string) => {
     });
 
     const { data: activity, isLoading: isLoadingActivity } = useQuery({
-        queryKey: ['activities', id],
+        queryKey: ['friendGrid', id],
         queryFn: async () => {
-            const response = await agent.get<Activity>(`/activities/${id}`);
+            const response = await agent.get<Activity>(`/friendGrid/${id}`);
             return response.data;
         },
         enabled: !!id && !!currentuser,
@@ -70,35 +70,35 @@ export const useActivities = (id?: string) => {
 
     const updateActivity = useMutation({
         mutationFn: async (activity: Activity) => {
-            await agent.put('/activities', activity)
+            await agent.put('/friendGrid', activity)
         },
         onSuccess: async () => {
             await queryClient.invalidateQueries({
-                queryKey: ['activities']
+                queryKey: ['friendGrid']
             })
         }
     })
 
     const createActivity = useMutation({
         mutationFn: async (activity: Activity) => {
-            const response = await agent.post('/activities', activity)
+            const response = await agent.post('/friendGrid', activity)
             return response.data;
 
         },
         onSuccess: async () => {
             await queryClient.invalidateQueries({
-                queryKey: ['activities']
+                queryKey: ['friendGrid']
             })
         }
     });
 
     const deleteActivity = useMutation({
         mutationFn: async (id: string) => {
-            await agent.delete(`/activities/${id}`)
+            await agent.delete(`/friendGrid/${id}`)
         },
         onSuccess: async () => {
             await queryClient.invalidateQueries({
-                queryKey: ['activities']
+                queryKey: ['friendGrid']
             })
         }
     });
@@ -106,15 +106,15 @@ export const useActivities = (id?: string) => {
     const updateAttendance = useMutation(
         {
             mutationFn: async (id: string) => {
-                await agent.post(`activities/${id}/attend`)
+                await agent.post(`friendGrid/${id}/attend`)
 
             },
             onMutate: async (activityId: string) => {
-                await queryClient.cancelQueries({ queryKey: ['activities', activityId] });
+                await queryClient.cancelQueries({ queryKey: ['friendGrid', activityId] });
 
-                const prevActivity = queryClient.getQueryData<Activity>(['activities', activityId]);
+                const prevActivity = queryClient.getQueryData<Activity>(['friendGrid', activityId]);
 
-                queryClient.setQueryData<Activity>(['activities', activityId], oldActivity => {
+                queryClient.setQueryData<Activity>(['friendGrid', activityId], oldActivity => {
                     if (!oldActivity || !currentuser) {
                         return oldActivity
                     }
@@ -145,7 +145,7 @@ export const useActivities = (id?: string) => {
             {
                 if(context?.prevActivity){
                     console.log(error);
-                    queryClient.setQueryData(['activities', activityId], context.prevActivity)
+                    queryClient.setQueryData(['friendGrid', activityId], context.prevActivity)
                 }
             }
         })

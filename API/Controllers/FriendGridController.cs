@@ -11,11 +11,11 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers;
 
-public class ActivitiesController : BaseApiController
+public class FriendGridController : BaseApiController
 {
 
     [HttpGet]
-    public async Task<ActionResult<PagedList<ActivityDto, DateTime?>>> GetActivities([FromQuery]ActivityParams activityParams)
+    public async Task<ActionResult<PagedList<ActivityDto, DateTime?>>> GetFriendGrid([FromQuery]ActivityParams activityParams)
     {
         return HandleResult(await Mediator.Send(new GetActivityList.Query{Params = activityParams}));
     }
@@ -25,7 +25,6 @@ public class ActivitiesController : BaseApiController
     [HttpGet("{id}")]
     public async Task<ActionResult<ActivityDto>> GetActivityDetail(string id)
     {
-
         return HandleResult(await Mediator.Send(new GetActivityDetails.Query { Id = id }));
 
     }

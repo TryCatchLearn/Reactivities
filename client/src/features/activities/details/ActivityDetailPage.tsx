@@ -15,7 +15,7 @@ export default function ActivityDetailPage() {
 
     if (isLoadingActivity) return <Typography>Loading... </Typography>
 
-    if (!activity) return <Typography>Activity is not found </Typography>
+    if (!activity) return <Typography>Mission is not found </Typography>
 
     return (
         <Grid2 container spacing={3}>

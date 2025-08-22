@@ -35,13 +35,13 @@ export default function ActivityForm() {
         try {
             if(activity){
                 updateActivity.mutate({...activity, ...Data},{
-                    onSuccess: () =>  navigate(`/activities/${activity.id}`)
+                    onSuccess: () =>  navigate(`/friendGrid/${activity.id}`)
                 })
             }
             else
             {
              createActivity.mutate(Data, {
-                onSuccess:( id)=> navigate(`/activities/${id}`)
+                onSuccess:( id)=> navigate(`/friendGrid/${id}`)
              })   
             }
         } catch (error) {
@@ -53,7 +53,7 @@ export default function ActivityForm() {
     return (
         <Paper sx={{ borderRadius: 3, padding: 3 }}>
             <Typography variant="h5" gutterBottom color="primary">
-                {activity ? 'Edit Activity' : 'Create Activity'}
+                {activity ? 'Edit Mission' : 'Create Mission'}
             </Typography>
             <Box component='form' onSubmit={handleSubmit(onSubmit)} display='flex' flexDirection='column' gap={3}>
                 <TextInput label='Title' control={control} name='title' />
@@ -69,7 +69,7 @@ export default function ActivityForm() {
                 </Box>
                 <LocationInput control={control} label='Enter the Location' name="location" />
                 <Box display='flex' justifyContent='end' gap={3}>
-                    <Button onClick={() => navigate('/activities/')} color='inherit'>Cancel</Button>
+                    <Button onClick={() => navigate('/friendGrid/')} color='inherit'>Cancel</Button>
                     <Button
                         type="submit"
                         color='success'

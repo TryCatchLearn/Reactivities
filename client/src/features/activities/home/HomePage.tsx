@@ -26,22 +26,22 @@ export default function HomePage() {
       >
         <Group sx={{height: 110, widows: 110}}/>
         <Typography variant="h1">
-          Reactivities
+          FriendGrid
         </Typography>
 
       </Box>
       <Typography variant="h2">
-        Welcome To Reactivities
+        Welcome To FriendGrid
       </Typography>
       <Button
       component={Link}
-      to='/activities'
+      to='/friendGrid'
       size="large"
       variant="contained"
       sx={{height: 80, borderRadius: 4, fontSize:'1.5rem '}}
       
       >
-        Take Me To Reactivities!
+        Take Me To Missions!
       </Button>
 
     </Paper>

@@ -78,7 +78,7 @@ export default function ActivityCard({ activity }: Props) {
 
         <Button
           component={Link}
-          to={`/activities/${activity.id}`}
+          to={`/friendGrid/${activity.id}`}
           size="medium"
           variant="contained"
           sx={{ display: 'flex', justifySelf: 'self-end', borderRadius: 3 }}

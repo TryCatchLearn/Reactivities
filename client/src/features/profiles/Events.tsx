@@ -41,7 +41,7 @@ import { Box, Grid2, Tabs, Tab, Typography, Card, CardMedia, CardContent } from 
             {(!userActivities || userActivities.length === 0) 
             && !loadingUserActivities ? (
                 <Typography mt={2}>
-                    No activities to show
+                    No Missions to show
                 </Typography>
             ) : null}
             <Grid2 

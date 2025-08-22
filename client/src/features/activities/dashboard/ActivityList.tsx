@@ -19,7 +19,7 @@ const ActivityList = observer(function ActivityList() {
 
   if (isLoading) return <Typography> Loading...</Typography>
 
-  if (!activitiesGroup) return <Typography> No Activities Found</Typography>
+  if (!activitiesGroup) return <Typography> No Missions Found</Typography>
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
       {activitiesGroup.pages.map((activities, index) => {

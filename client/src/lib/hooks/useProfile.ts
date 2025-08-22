@@ -9,7 +9,7 @@ export const useProfile = (id?: string, predicate?: string) => {
     const queryclient = useQueryClient();
 
       const { data: userActivities, isLoading: loadingUserActivities } = useQuery({
-        queryKey: ['user-activities', filter],
+        queryKey: ['user-friendGrid', filter],
         queryFn: async () => {
             const response = await agent.get<Activity[]>(`/profiles/${id}/activities`, {
                 params: {

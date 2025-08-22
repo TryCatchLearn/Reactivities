@@ -42,7 +42,7 @@ const ActivityDetailsChat= observer(function ActivityDetailsChat() {
                     padding: 2
                 }}
             >
-                <Typography variant="h6">Chat about this event</Typography>
+                <Typography variant="h6">Chat about this Mission</Typography>
             </Box>
             <Card>
                 <CardContent>
