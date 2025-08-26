@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Application.Interface;
 using Infrastructure.Security;
-using System.Net.NetworkInformation;
 using Infrastructure.Photos;
 using API.SignalR;
 
@@ -25,7 +24,7 @@ builder.Services.AddControllers(opt =>
 });
 builder.Services.AddDbContext<AppDbContext>(opt =>
 {
-    opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 builder.Services.AddCors();
 builder.Services.AddSignalR(options =>
@@ -73,12 +72,17 @@ app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod()
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
+
 
 
 app.MapControllers();
 
 app.MapGroup("api").MapIdentityApi<User>();   //api/login
 app.MapHub<CommentHub>("/comments");
+app.MapFallbackToController("Index", "Fallback");
 
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;

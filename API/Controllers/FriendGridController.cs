@@ -1,12 +1,8 @@
-using System;
 using Application.Activities.Commands;
 using Application.Activities.DTOs;
 using Application.Activities.Queries;
-using Domain;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Application.Core;
-using SQLitePCL;
 using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers;
@@ -15,9 +11,9 @@ public class FriendGridController : BaseApiController
 {
 
     [HttpGet]
-    public async Task<ActionResult<PagedList<ActivityDto, DateTime?>>> GetFriendGrid([FromQuery]ActivityParams activityParams)
+    public async Task<ActionResult<PagedList<ActivityDto, DateTime?>>> GetFriendGrid([FromQuery] ActivityParams activityParams)
     {
-        return HandleResult(await Mediator.Send(new GetActivityList.Query{Params = activityParams}));
+        return HandleResult(await Mediator.Send(new GetActivityList.Query { Params = activityParams }));
     }
 
 

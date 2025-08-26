@@ -6,7 +6,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Update;
 using Persistence;
-using SQLitePCL;
+
 
 namespace Application.Profiles.Commands;
 

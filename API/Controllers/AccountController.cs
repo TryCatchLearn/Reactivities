@@ -1,5 +1,3 @@
-using System;
-using System.Data;
 using API.DTOs;
 using Domain;
 using Microsoft.AspNetCore.Authorization;

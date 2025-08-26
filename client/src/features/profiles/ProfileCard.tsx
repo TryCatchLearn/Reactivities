@@ -1,7 +1,6 @@
 import { Person } from "@mui/icons-material";
 import { Box, Card, CardContent, CardMedia, Chip, Divider, Typography } from "@mui/material";
 import { Link } from "react-router";
-import { Profile } from "../../lib/types";
 
 
 type Props = {

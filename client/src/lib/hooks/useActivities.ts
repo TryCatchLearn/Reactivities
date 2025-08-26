@@ -3,6 +3,7 @@ import agent from "../api/agent";
 import { useLocation } from "react-router";
 import { UseAccount } from "./useAccount";
 import { useStore } from "./useStore";
+import { FieldValues } from "react-hook-form";
 
 export const useActivities = (id?: string) => {
     const {activityStore: {filter, startDate}} = useStore();
@@ -27,12 +28,11 @@ export const useActivities = (id?: string) => {
             });
             return response.data;
         },
-        staleTime: 1000 * 60 * 5, 
         placeholderData: keepPreviousData,
         initialPageParam: null,
         getNextPageParam: (lastPage) => lastPage.nextCursor,
 
-        enabled: !id && location.pathname.toLowerCase().includes('friendgrid') && !!currentuser,
+        enabled: !id && location.pathname.toLowerCase().includes('/friendgrid') && !!currentuser,
         select: data => ({
             ...data,
             pages: data.pages.map((page) =>({
@@ -80,7 +80,7 @@ export const useActivities = (id?: string) => {
     })
 
     const createActivity = useMutation({
-        mutationFn: async (activity: Activity) => {
+        mutationFn: async (activity: FieldValues) => {
             const response = await agent.post('/friendGrid', activity)
             return response.data;
 
@@ -106,7 +106,7 @@ export const useActivities = (id?: string) => {
     const updateAttendance = useMutation(
         {
             mutationFn: async (id: string) => {
-                await agent.post(`friendGrid/${id}/attend`)
+                await agent.post(`/friendGrid/${id}/attend`)
 
             },
             onMutate: async (activityId: string) => {

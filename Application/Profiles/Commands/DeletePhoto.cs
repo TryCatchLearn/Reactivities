@@ -1,11 +1,8 @@
-using System;
-using System.Xml.XPath;
 using Application.Core;
 using Application.Interface;
 using MediatR;
-using Microsoft.Extensions.Configuration.UserSecrets;
 using Persistence;
-using SQLitePCL;
+
 
 namespace Application.Profiles.Commands;
 

@@ -8,6 +8,7 @@ function App() {
   const locatoin = useLocation();
 
   return (
+    
     <Box sx={{ bgcolor: '#eeeeee', minHeight: '100vh' }}>
       <ScrollRestoration/>
       <CssBaseline />

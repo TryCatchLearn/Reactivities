@@ -47,7 +47,7 @@ public class AppDbContext(DbContextOptions options) : IdentityDbContext<User>(op
             x.HasOne(o => o.Target)
             .WithMany(f => f.Followers)
             .HasForeignKey(o => o.TargetId)
-            .OnDelete(DeleteBehavior.Cascade);
+            .OnDelete(DeleteBehavior.NoAction);
       });
 
 

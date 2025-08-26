@@ -3,8 +3,6 @@ import Popover from '@mui/material/Popover';
 import { useState } from 'react';
 import { Link } from 'react-router';
 import ProfileCard from '../../../features/profiles/ProfileCard';
-import { Profile } from '../../../lib/types';
-
 
 type Props = {
     profile: Profile

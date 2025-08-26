@@ -1,7 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import agent from "../api/agent";
 import { useMemo, useState } from "react";
-import { Photo, Profile, User } from "../types";
 
 export const useProfile = (id?: string, predicate?: string) => {
     const [filter, setFilter] = useState<string | null>(null);
@@ -11,7 +10,7 @@ export const useProfile = (id?: string, predicate?: string) => {
       const { data: userActivities, isLoading: loadingUserActivities } = useQuery({
         queryKey: ['user-friendGrid', filter],
         queryFn: async () => {
-            const response = await agent.get<Activity[]>(`/profiles/${id}/activities`, {
+            const response = await agent.get<Activity[]>(`/profiles/${id}/friendGrid`, {
                 params: {
                     filter
                 }
