@@ -6,19 +6,23 @@ import { LockOpen } from "@mui/icons-material";
 import TextInput from "../../app/layout/components/TextInput";
 import { Link } from "react-router";
 import { registerSchema, RegisterSchema } from "../../lib/schemas/registerSchema";
+import { useState } from "react";
+import RegisterSuccess from "./RegisterSuccess";
 
 export default function RegisterForm() {
 
 
     const { registerUser } = UseAccount();
-    const { control, handleSubmit, setError, formState: { isValid, isSubmitting } } = useForm<RegisterSchema>({
+    const [registerSuccess, setRegisterSuccess] = useState(false);
+    const { control, handleSubmit, setError, watch, formState: { isValid, isSubmitting } } = useForm<RegisterSchema>({
         mode: 'onTouched',
         resolver: zodResolver(registerSchema)
     });
-
+    const email = watch('email');
 
     const onSubmit = async (data: RegisterSchema) => {
         await registerUser.mutateAsync(data, {
+            onSuccess: () => setRegisterSuccess(true),
             onError: (error) => {
                 if (Array.isArray(error)) {
                     error.forEach(err => {
@@ -31,48 +35,56 @@ export default function RegisterForm() {
         });
     }
     return (
-        <Paper
-            component='form'
-            onSubmit={handleSubmit(onSubmit)}
-            sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                p: 3,
-                gap: 3,
-                maxWidth: 'md',
-                mx: 'auto',
-                borderRadius: 3
-            }}
-        >
-            <Box display='flex' alignItems='center' justifyContent='center'
-                gap={3} color='secondary.main'>
-                <LockOpen fontSize="large" />
-                <Typography variant="h4"> Register</Typography>
-            </Box>
+        <>
+            {registerSuccess ? (
+                <RegisterSuccess email={email} />
+            ) : (
+                <Paper
+                    component='form'
+                    onSubmit={handleSubmit(onSubmit)}
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        p: 3,
+                        gap: 3,
+                        maxWidth: 'md',
+                        mx: 'auto',
+                        borderRadius: 3
+                    }}
+                >
+                    <Box display='flex' alignItems='center' justifyContent='center'
+                        gap={3} color='secondary.main'>
+                        <LockOpen fontSize="large" />
+                        <Typography variant="h4"> Register</Typography>
+                    </Box>
 
-            <TextInput label='Email' control={control} name='email' />
-            <TextInput label='DisplayName' control={control} name='displayName' />
-            <TextInput label='Password' control={control} name='password' />
+                    <TextInput label='Email' control={control} name='email' />
+                    <TextInput label='DisplayName' control={control} name='displayName' />
+                    <TextInput label='Password' control={control} name='password' />
 
-            <Button
-                type='submit'
-                disabled={!isValid || isSubmitting}
-                variant="contained"
-                size="large"
-            >
-                Register
+                    <Button
+                        type='submit'
+                        disabled={!isValid || isSubmitting}
+                        variant="contained"
+                        size="large"
+                    >
+                        Register
 
-            </Button>
-            <Typography sx={{ textAlign: 'center' }}>
-                Already have a Account?
-                <Typography sx={{ ml: 2 }} component={Link} to='/login' color="primary">
-                    Sign In
-                </Typography>
-            </Typography>
-
-
+                    </Button>
+                    <Typography sx={{ textAlign: 'center' }}>
+                        Already have a Account?
+                        <Typography sx={{ ml: 2 }} component={Link} to='/login' color="primary">
+                            Sign In
+                        </Typography>
+                    </Typography>
 
 
-        </Paper>
+
+
+                </Paper>
+
+            )}
+        </>
+
     )
 }

@@ -6,26 +6,47 @@ import { Box, Button, Paper, Typography } from "@mui/material";
 import { LockOpen } from "@mui/icons-material";
 import TextInput from "../../app/layout/components/TextInput";
 import { Link, useLocation, useNavigate } from "react-router";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function LoginForm() {
 
-
-    const { loginUser } = UseAccount();
-    const location= useLocation();
-    const navigate= useNavigate();
-    const { control, handleSubmit, formState: { isValid, isSubmitting } } = useForm<LoginSchema>({
+    const [notVerified, setNotVerified] = useState(false);
+    const { loginUser, resentconfirmationEmail } = UseAccount();
+    const location = useLocation();
+    const navigate = useNavigate();
+    const { control, handleSubmit, watch, formState: { isValid, isSubmitting } } = useForm<LoginSchema>({
         mode: 'onTouched',
         resolver: zodResolver(loginSchema)
     });
+    
+    const email = watch('email');
+    const handleResendEmail = async () => {
+        try {
+             await resentconfirmationEmail.mutateAsync({email});
+        setNotVerified(false);
+        } catch (error) {
+            console.log(error);
+            toast.error(
+                'Problem sending email pleae check and Try Again'
+            )
+            
+        }
+       
+    }
 
 
     const onSubmit = async (data: LoginSchema) => {
         await loginUser.mutateAsync(data, {
-            onSuccess: () =>
-            {
+            onSuccess: () => {
                 navigate(location.state?.from || '/friendGrid');
+            },
+            onError: error => {
+                if (error.message === 'NotAllowed') {
+                    setNotVerified(true);
+                }
             }
-        });
+        })
     }
     return (
         <Paper
@@ -48,8 +69,8 @@ export default function LoginForm() {
             </Box>
 
             <TextInput label='Email' control={control} name='email' />
-            <TextInput label= 'Password'  control={control} name='password'  />
-           
+            <TextInput label='Password' control={control} name='password' />
+
             <Button
                 type='submit'
                 disabled={!isValid || isSubmitting}
@@ -59,12 +80,27 @@ export default function LoginForm() {
                 Login
 
             </Button>
-            <Typography sx={{textAlign: 'center'}}>
-                Don't have a Account?
-                <Typography sx={{ml: 2}} component={Link} to ='/register' color="primary">
-                Sign Up
+            {notVerified ? (
+                <Box display='flex' flexDirection='column' justifyContent='center'>
+                    <Typography textAlign='center' color='error'>
+                        Seems Your Email is not Verified. Just click the Button to resend the Email
+                    </Typography>
+                    <Button
+                    disabled = {resentconfirmationEmail.isPending}
+                    onClick={handleResendEmail}
+                    >
+                        Send Emial Link
+                    </Button>
+                </Box>
+            ) : (
+                <Typography sx={{ textAlign: 'center' }}>
+                    Don't have a Account?
+                    <Typography sx={{ ml: 2 }} component={Link} to='/register' color="primary">
+                        Sign Up
+                    </Typography>
                 </Typography>
-                 </Typography>
+            )}
+
 
 
 

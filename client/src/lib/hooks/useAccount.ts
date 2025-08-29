@@ -29,11 +29,8 @@ export const UseAccount = () => {
 
         mutationFn: async (creds: RegisterSchema) => {
             await agent.post('/account/register', creds)
-        },
-        onSuccess: () => {
-            toast.success('You are now registerd - Please login');
-            navigate('/login');
-        },
+        }
+        
         
     })
 
@@ -49,6 +46,25 @@ export const UseAccount = () => {
             queryClinet.removeQueries({ queryKey: ['activities'] });
             navigate('/')
         }
+    })
+    const verifyEmail = useMutation({
+        mutationFn: async({userId, code}:{userId: string, code: string}) => {
+            await agent.get(`/confirmEmail?userId=${userId}&code=${code}`)
+        }
+    });
+
+    const resentconfirmationEmail = useMutation({
+            mutationFn: async ({email, userId}:{email?: string, userId?: string | null}) => {
+                await agent.get(`/account/resendConfirmEmail`, {
+                    params: {
+                        email,
+                        userId
+                    }
+                })
+            },
+            onSuccess: () => {
+                toast.success('Email Is sent Dear User Request to confirm the link on your Email account and login again');
+            }
     })
 
 
@@ -67,6 +83,8 @@ export const UseAccount = () => {
         currentuser,
         logoutuser,
         loadingUserInfo,
-        registerUser
+        registerUser,
+        verifyEmail,
+        resentconfirmationEmail
     }
 }
