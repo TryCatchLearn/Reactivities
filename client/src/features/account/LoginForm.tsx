@@ -19,20 +19,20 @@ export default function LoginForm() {
         mode: 'onTouched',
         resolver: zodResolver(loginSchema)
     });
-    
+
     const email = watch('email');
     const handleResendEmail = async () => {
         try {
-             await resentconfirmationEmail.mutateAsync({email});
-        setNotVerified(false);
+            await resentconfirmationEmail.mutateAsync({ email });
+            setNotVerified(false);
         } catch (error) {
             console.log(error);
             toast.error(
                 'Problem sending email pleae check and Try Again'
             )
-            
+
         }
-       
+
     }
 
 
@@ -86,19 +86,26 @@ export default function LoginForm() {
                         Seems Your Email is not Verified. Just click the Button to resend the Email
                     </Typography>
                     <Button
-                    disabled = {resentconfirmationEmail.isPending}
-                    onClick={handleResendEmail}
+                        disabled={resentconfirmationEmail.isPending}
+                        onClick={handleResendEmail}
                     >
                         Send Emial Link
                     </Button>
                 </Box>
             ) : (
-                <Typography sx={{ textAlign: 'center' }}>
-                    Don't have a Account?
-                    <Typography sx={{ ml: 2 }} component={Link} to='/register' color="primary">
-                        Sign Up
+                <Box display='flex' alignItems='center' justifyContent='center' gap={3}>
+                    <Typography>
+                        Oops IF you Forgot Password? <Link to='/forgotPassword'> click me</Link>
                     </Typography>
-                </Typography>
+                    <Typography sx={{ textAlign: 'center' }}>
+                        Don't have a Account?
+                        <Typography sx={{ ml: 2 }} component={Link} to='/register' color="primary">
+                            Sign Up
+                        </Typography>
+                    </Typography>
+                </Box>
+
+
             )}
 
 

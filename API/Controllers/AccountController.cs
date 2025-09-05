@@ -28,8 +28,8 @@ public class AccountController(SignInManager<User> signInManager, IEmailSender<U
         if (result.Succeeded)
         {
             await SendConfirmationEmailAsync(user, registerDTO.Email);
-            
-             return Ok();
+
+            return Ok();
         }
 
         foreach (var error in result.Errors)
@@ -98,8 +98,23 @@ public class AccountController(SignInManager<User> signInManager, IEmailSender<U
         await signInManager.SignOutAsync();
 
         return NoContent();
-        
+
     }
+
+    [HttpPost("change-password")]
+    public async Task<ActionResult> ChangePassword(ChangePassDto passDto)
+    {
+        var user = await signInManager.UserManager.GetUserAsync(User);
+
+        if (user == null) return Unauthorized();
+
+        var result = await signInManager.UserManager.ChangePasswordAsync(user, passDto.CurrentPassword, passDto.NewPassword);
+
+        if (result.Succeeded) return Ok();
+
+        return BadRequest(result.Errors.First().Description);
+    }
+    
 
 }
 
