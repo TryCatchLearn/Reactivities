@@ -11,4 +11,16 @@
     <ProjectReference Include="../Persistence/Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="16.0.0" />
+    <PackageReference Include="MediatR" Version="14.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Activities/" />
+    <Folder Include="Activities/Commands/" />
+    <Folder Include="Activities/Queries/" />
+    <Folder Include="Core/" />
+  </ItemGroup>
+
 </Project>
