@@ -24,6 +24,9 @@
     <Folder Include="Activities/Queries/" />
     <Folder Include="Activities/Validators/" />
     <Folder Include="Core/" />
+    <Folder Include="Interfaces/" />
+    <Folder Include="Profiles/" />
+    <Folder Include="Profiles/DTOs/" />
   </ItemGroup>
 
 </Project>
