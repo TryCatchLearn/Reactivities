@@ -11,6 +11,13 @@ type Activity = {
     longitude: number
 }
 
+type User = {
+    id: string
+    email: string
+    displayName: string
+    image?: string
+}
+
 type LocationIQSuggestion = {
     place_id: string
     osm_id: string
