@@ -1,4 +1,5 @@
-import { Event, FilterList } from "@mui/icons-material";
+import Event from "@mui/icons-material/Event";
+import FilterList from "@mui/icons-material/FilterList";
 import { Box, Typography, MenuList, MenuItem, ListItemText, Paper } from "@mui/material";
 import 'react-calendar/dist/Calendar.css';
 import Calendar from "react-calendar";

@@ -1,4 +1,4 @@
-import { Group } from "@mui/icons-material";
+import Group from "@mui/icons-material/Group";
 import { Box, Button, Paper, Typography } from "@mui/material";
 import { Link } from "react-router";
 

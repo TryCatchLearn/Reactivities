@@ -1,4 +1,5 @@
-import { DeleteOutline, Delete } from "@mui/icons-material";
+import DeleteOutline from "@mui/icons-material/DeleteOutline";
+import Delete from "@mui/icons-material/Delete";
 import { Box, Button } from "@mui/material";
 
 export default function DeleteButton() {

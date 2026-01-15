@@ -1,7 +1,9 @@
 import { useAccount } from "../../lib/hooks/useAccount.ts";
 import { useState } from "react";
 import { Avatar, Box, Button, Divider, ListItemIcon, ListItemText, Menu, MenuItem } from "@mui/material";
-import { Add, Logout, Person } from "@mui/icons-material";
+import Add from "@mui/icons-material/Add";
+import Person from "@mui/icons-material/Person";
+import Logout from "@mui/icons-material/Logout";
 import { Link } from "react-router";
 
 export default function UserMenu() {

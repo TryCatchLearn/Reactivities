@@ -1,4 +1,5 @@
-import { Star, StarBorder } from "@mui/icons-material";
+import Star from "@mui/icons-material/Star";
+import StarBorder from "@mui/icons-material/StarBorder";
 import {Box, Button} from "@mui/material";
 
 type Props = {

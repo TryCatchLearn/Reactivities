@@ -1,4 +1,4 @@
-import { Group } from "@mui/icons-material";
+import Group from "@mui/icons-material/Group";
 import { Box, AppBar, Toolbar, Typography, Container, MenuItem, CircularProgress } from "@mui/material";
 import { NavLink } from "react-router";
 import MenuItemLink from "../shared/components/MenuItemLink";

@@ -1,4 +1,5 @@
-import { AccessTime, Place } from "@mui/icons-material";
+import AccessTime from "@mui/icons-material/AccessTime";
+import Place from "@mui/icons-material/Place";
 import { Avatar, Box, Button, Card, CardContent, CardHeader, Chip, Divider, Typography } from "@mui/material";
 import { Link } from "react-router";
 import { formatDate } from "../../../lib/util/util";

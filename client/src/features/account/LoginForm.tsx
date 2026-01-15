@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { loginSchema, type LoginSchema } from "../../lib/schemas/loginSchema.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Box, Button, Paper, Typography } from "@mui/material";
-import { LockOpen } from "@mui/icons-material";
+import LockOpen from "@mui/icons-material/LockOpen";
 import TextInput from "../../app/shared/components/TextInput.tsx";
 import { useNavigate, useLocation, Link } from "react-router";
 

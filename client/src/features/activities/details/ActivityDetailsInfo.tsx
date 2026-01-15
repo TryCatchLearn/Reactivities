@@ -1,4 +1,6 @@
-import { CalendarToday, Info, Place } from "@mui/icons-material";
+import CalendarToday from "@mui/icons-material/CalendarToday";
+import Info from "@mui/icons-material/Info";
+import Place from "@mui/icons-material/Place";
 import { Box, Button, Divider, Grid, Paper, Typography } from "@mui/material";
 import { formatDate } from "../../../lib/util/util";
 import { useState } from "react";

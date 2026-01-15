@@ -2,7 +2,7 @@ import {useAccount} from "../../lib/hooks/useAccount.ts";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {Box, Button, Paper, Typography} from "@mui/material";
-import {LockOpen} from "@mui/icons-material";
+import LockOpen from "@mui/icons-material/LockOpen";
 import TextInput from "../../app/shared/components/TextInput.tsx";
 import {registerSchema, type RegisterSchema} from "../../lib/schemas/registerSchema.ts";
 import { Link } from "react-router";

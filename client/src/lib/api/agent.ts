@@ -21,12 +21,12 @@ agent.interceptors.request.use(config => {
 
 agent.interceptors.response.use(
     async response => {
-        await sleep(1000);
+        if (import.meta.env.DEV) await sleep(1000);
         store.uiStore.isIdle();
         return response;
     },
     async error => {
-        await sleep(1000);
+        if (import.meta.env.DEV) await sleep(1000);
         store.uiStore.isIdle(); // Ensure the busy state is reset on error
         const {data, status} = error.response;
         switch (status) {

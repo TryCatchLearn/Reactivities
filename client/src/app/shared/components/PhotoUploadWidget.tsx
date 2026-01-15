@@ -1,4 +1,4 @@
-import { CloudUpload } from "@mui/icons-material";
+import CloudUpload from "@mui/icons-material/CloudUpload";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDropzone } from "react-dropzone";

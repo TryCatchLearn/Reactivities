@@ -1,5 +1,5 @@
 import { Box, Card, CardContent, CardMedia, Chip, Divider, Typography } from "@mui/material";
-import { Person } from "@mui/icons-material";
+import Person from "@mui/icons-material/Person";
 import { Link } from "react-router";
 
 type Props = {
