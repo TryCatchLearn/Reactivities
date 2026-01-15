@@ -18,7 +18,7 @@ public class ProfilesController : BaseApiController
     [HttpGet("{userId}/photos")]
     public async Task<ActionResult<List<Photo>>> GetPhotosForUser(string userId)
     {
-        return HandleResult(await Mediator.Send(new GetProfilePhotos.Query{UserId = userId}));
+        return HandleResult(await Mediator.Send(new GetProfilePhotos.Query { UserId = userId }));
     }
 
     [HttpDelete("{photoId}/photos")]
@@ -49,12 +49,19 @@ public class ProfilesController : BaseApiController
     public async Task<IActionResult> Follow(string userId)
     {
         return HandleResult(await Mediator.Send(new FollowToggle.Command
-            { TargetUserId = userId }));
+        { TargetUserId = userId }));
     }
 
     [HttpGet("{userId}/follow-list")]
     public async Task<IActionResult> GetFollowings(string userId, string predicate)
     {
-        return HandleResult(await Mediator.Send(new GetFollowings.Query {UserId = userId, Predicate = predicate}));
+        return HandleResult(await Mediator.Send(new GetFollowings.Query { UserId = userId, Predicate = predicate }));
+    }
+
+    [HttpGet("{userId}/activities")]
+    public async Task<IActionResult> GetUserActivities(string userId, string filter)
+    {
+        return HandleResult(await Mediator.Send(new GetUserActivities.Query
+        { UserId = userId, Filter = filter }));
     }
 }
