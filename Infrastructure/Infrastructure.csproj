@@ -15,11 +15,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Email/" />
     <Folder Include="Photos/" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CloudinaryDotNet" Version="1.27.9" />
+    <PackageReference Include="Resend" Version="0.2.1" />
   </ItemGroup>
 
 </Project>
