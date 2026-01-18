@@ -4,9 +4,6 @@
 name: Build and deploy ASP.Net Core app to Azure Web App - reactivities-2026
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
